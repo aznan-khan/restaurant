@@ -18,11 +18,11 @@ class Header extends Component {
     }
     render() {
         return(
-            <>
+            <div>
             <Navbar dark expand='md'>
                 <div className="container">
                     <NavbarToggler onClick = {this.toggleNav}></NavbarToggler>
-                    <NavbarBrand className='mr-auto' ><img src='assets/images/logo.png' height='30' width='41'/></NavbarBrand>
+                    <NavbarBrand className='mr-auto' ><img src='assets/images/logo.png' height='30' width='41' alt='Restaurant'/></NavbarBrand>
                     <Collapse isOpen = {this.state.isOpenNav} navbar>
                         <Nav navbar>
                             <NavItem>
@@ -51,7 +51,7 @@ class Header extends Component {
                     </div>
                 </div>  
             </Jumbotron>
-            </>
+            </div>
         );
     }
 }
