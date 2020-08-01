@@ -69,7 +69,6 @@ class Menu extends Component {
                         <h3>Menu</h3>
                         <hr/>
                     </div>
-                    
                 </div>
                 <div className="row">
                     {menu}
