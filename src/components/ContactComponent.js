@@ -155,7 +155,8 @@ class Contact extends Component {
                                         />
                                 </Col>
                             </Row>
-                            <Row className='form-group'>                                <Col md={{size:6, offset:2}}>
+                            <Row className='form-group'>                                
+                                <Col md={{size:6, offset:2}}>
                                     <div className='form-check'>
                                         <Label check>
                                             <Control.checkbox model='.agree'
