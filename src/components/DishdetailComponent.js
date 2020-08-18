@@ -4,7 +4,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, Button, Bread
      Col, Modal, ModalHeader, ModalBody, Label} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
-
+import {Loading} from './LoadingComponent';
 
 const minLength = (len) => (val) => !(val) || val.length >= len;
 const maxLength = (len) => (val) => (val) && val.length <= len;
@@ -90,16 +90,37 @@ class CommentForm extends Component {
     }
 }
 class Dishdetail extends Component {
-    renderDish(dish) {
-        return (
-            <Card>
-                <CardImg width="100%" src={dish.image} alt={dish.name} />
-                <CardBody>
-                    <CardTitle>{dish.name}</CardTitle>
-                    <CardText>{dish.description}</CardText>
-                </CardBody>
-            </Card>
-        );
+    renderDish(dish, isLoading, errMessage) {
+        if(isLoading) {
+            return(
+                <div className='container'>
+                    <div className='row'>
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if(errMessage) {
+            return(
+                <div className='container'>
+                    <div className='row'>
+                        <h4>{errMessage}</h4>
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <Card>
+                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            );
+        }
+        
     }
 
     renderComments(comments, addComment, dishId) {
@@ -141,7 +162,7 @@ class Dishdetail extends Component {
                     </div>
                     <div className="row">
                         <div className="col-12 col-md-5 m-1">
-                            {this.renderDish(this.props.dish)}
+                            {this.renderDish(this.props.dish, this.props.dishLoading, this.props.errMessage)}
                         </div>
                         <div className="col-12 col-md-5 m-1">
                             {this.renderComments(this.props.comments, this.props.addComment, this.props.dish.id) }
