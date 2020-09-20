@@ -61,7 +61,9 @@ function Home(props) {
                     errMessage = {props.promosErrMessage}/>
                 </div>
                 <div className='col-12 col-md m-1'>
-                    <RenderCard items={props.leader}/>
+                    <RenderCard items={props.leader}
+                    isLoading = {props.leadersLoading}
+                    errMessage = {props.leadersErrMessage}/>
                 </div>
                 
             </div>
